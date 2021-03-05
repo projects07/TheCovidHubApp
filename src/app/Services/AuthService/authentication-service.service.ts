@@ -18,9 +18,9 @@ export class AuthenticationServiceService {
   this.profileObs$.next(profile);
   }
   loginAuthenticate(email:string,password:string){
-    return this.http.get("http://localhost:3000/Users?Email="+email+"&Password="+password);
+    return this.http.get("http://covid-hub.netlify.app/Users?Email="+email+"&Password="+password);
   }
   AddNewUser(signUp:SignUp){
-    return this.http.post("http://localhost:3000/Users/",signUp,{headers:new HttpHeaders({'Content-Type':'application/json'})})
+    return this.http.post("http://covid-hub.netlify.app/Users/",signUp,{headers:new HttpHeaders({'Content-Type':'application/json'})})
   }
 }
