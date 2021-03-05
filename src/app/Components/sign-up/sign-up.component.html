@@ -1,0 +1,18 @@
+<div class="container" style="margin-top: 100px;">
+        
+        <div class="row">
+                <div class="col-md-6 offset-3">
+                        <h2 class="h2">Create a new account, It's free</h2>
+                        <h4 class="display-1 text-center bg-primary" style="border:1px solid grey;border-radius: 10px;line-height: 50px;color:white">Sign In</h4>
+                        <div class="form-group">
+                                <form [formGroup]="signupform" (ngSubmit)="signUp()">
+                                        Username : <input type="text" formControlName="Username" class="form-control"/><br>
+                                        Email : <input type="text" formControlName="Email" class="form-control"/><br>
+                                        Password : <input type="password" formControlName="Password" class="form-control"/><br>
+                                        Phone : <input type="ngSubmit" formControlName="PhoneNumber" class="form-control"/><br>
+                                        <button type="submit" class="btn btn-primary">Sign Me Up</button>
+                                </form>
+                        </div>
+
+
+

@@ -1,0 +1,61 @@
+<div>
+  <!--Drop Down To Select List of Countries-->
+  <div class="row">
+    <div class="col-md-6 mx-auto text-center">
+      <h2 class="heading-black">Choose a State</h2>
+      <p class="text-muted lead">For more insights</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto text-center">
+      <select class="form-control" [(ngModel)]="specificState">
+        <option *ngFor="let state of states" [value]="state">{{state}}</option>
+      </select><br>
+      <button class="btn btn-primary" (click)="fetchSpecificData()">Get Info</button>
+    </div>
+  </div><br><hr><br>
+</div>
+  <div class="container">
+        <div class="row" *ngIf="totalActiveCases!=null">
+                <div class="col-sm-6">
+                  <div class="card bg-info text-white">
+                    <div class="card-header">Active</div>
+                    <div class="card-body">
+                      <h1 class="card-title">{{totalActiveCases}}</h1>
+                      <h3>Total number of active cases till today</h3>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col-sm-6">
+                        <div class="card bg-danger text-white">
+                          <div class="card-header">Confirmed</div>
+                          <div class="card-body">
+                            <h1 class="card-title">{{totalConfirmedCases}}</h1>
+                            <h3>Total number of confirmed cases till today</h3>
+                          </div>
+                        </div>
+                </div>
+                </div>
+       
+
+  <div *ngIf="indianSpecificData!=null">
+        <br><hr><br>
+          <table class="table">
+                  <thead>
+                          <tr>
+                                  <th>District</th>
+                                  <th>Confirmed</th>
+                                  <th>Active</th>
+                          </tr>
+                  </thead>
+                  <tbody>
+                          <tr *ngFor="let district of indianSpecificData.districtData">
+                                  <td>{{ district.district}}</td>
+                                  <td>{{ district.confirmed}}</td>
+                                  <td>{{district.active}}</td>
+                          </tr>
+                  </tbody>
+          </table>
+  </div>
+</div>
+  
