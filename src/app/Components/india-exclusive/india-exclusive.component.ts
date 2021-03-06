@@ -35,7 +35,6 @@ fetchSpecificData(){
     this.totalActiveCases = this.totalActiveCases + element.active;
     this.totalConfirmedCases = this.totalConfirmedCases + element.confirmed;
   });
-  console.log(this.indianSpecificData.districtData);
   
 }
 specificState:string;
