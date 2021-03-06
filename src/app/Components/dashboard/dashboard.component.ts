@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import * as Chart from 'chart.js';
 import { CovidServiceService } from 'src/app/Services/CovidReport/covid-service.service';
 import { CountryReports } from './CountryReports';
-import { CountryReports2} from './CountryReport2';
-import { DataTablesModule } from "angular-datatables";
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
   barChartOptions: { scaleShowVerticalLines: boolean; responsive: boolean; };
   barChartLabels: string[];
@@ -33,29 +32,34 @@ export class DashboardComponent implements OnInit {
   sepcificCountry:string;
   specificCountryData:CountryReports =null;
   dtOptions: DataTables.Settings = {};
+  historicalData: boolean = true;
+
   ngOnInit(): void {
     this.fetchAllData();
   }
+
   fetchAllData(){
     this.covidService.getCovidData().subscribe(result =>this.theCovidData = result as CountryReports[])
   }
+
   fetchHistoricalData(){
     let HistoryData = []
     this.Dates = this.Last7Days();
     this.covidService.getHistoricalData(this.Dates[6],this.Dates[0],this.sepcificCountry).subscribe(result =>{
+      console.log(result);
+      if(result[0].length === 0){
+        this.historicalData = false;
+      }
       HistoryData.push(result[0].Confirmed);
       HistoryData.push(result[1].Confirmed);
       HistoryData.push(result[2].Confirmed);
       HistoryData.push(result[3].Confirmed);
       HistoryData.push(result[4].Confirmed);
       HistoryData.push(result[5].Confirmed);
-      
     });
     this.theHistoricalCovidData = HistoryData;
-    console.log(this.theHistoricalCovidData);
-    
-    
   }
+
   getInsightsForCard(){
     let specificCountryData = this.sepcificCountry;
     let index = this.theCovidData.findIndex(c => c.country == specificCountryData);
