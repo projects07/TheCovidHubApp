@@ -18,9 +18,9 @@ export class AuthenticationServiceService {
   this.profileObs$.next(profile);
   }
   loginAuthenticate(email:string,password:string){
-    return this.http.get("https://covid-hub.netlify.app/Users?Email="+email+"&Password="+password);
+    return this.http.get("https://my-json-server.typicode.com/projects07/users-db/Users?Email="+email+"&Password="+password);
   }
   AddNewUser(signUp:SignUp){
-    return this.http.post("https://covid-hub.netlify.app/Users/",signUp,{headers:new HttpHeaders({'Content-Type':'application/json'})})
+    return this.http.post("https://my-json-server.typicode.com/projects07/users-db/Users/",signUp,{headers:new HttpHeaders({'Content-Type':'application/json'})})
   }
 }
