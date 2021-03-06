@@ -1,3 +1,27 @@
-<div class="col-md-5 offset-2 my-5">
-        <iframe width="800" height="550" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/fd6cc160-8250-4216-965e-fbc350515745"></iframe>
+<div class="col-md-5 container my-5">
+        
+        <div class="text-center">
+                <button class="btn btn-success" data-toggle="modal" data-target="#dialogFlowModal">Chat</button>
+        </div>
+
+        <div class="modal fade" id="dialogFlowModal" tabindex="-1">
+                <div class="modal-dialog">
+                        <div class="modal-content">
+                                <div class="modal-header">
+                                        <h3 class="modal-title" id="exampleModalLabel">Covid ChatBot</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe id="dialogflow" width="470" height="550" allow="microphone;"
+                                                src="https://console.dialogflow.com/api-client/demo/embedded/fd6cc160-8250-4216-965e-fbc350515745"></iframe>
+                                </div>
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
 </div>
