@@ -13,33 +13,33 @@
       </select><br>
       <button class="btn btn-primary" (click)="fetchSpecificData()">Get Info</button>
     </div>
-  </div><br><hr><br>
+  </div><br><br>
 </div>
-  <div class="container">
-        <div class="row" *ngIf="totalActiveCases!=null">
-                <div class="col-sm-6">
-                  <div class="card bg-info text-white">
-                    <div class="card-header">Active</div>
-                    <div class="card-body">
-                      <h1 class="card-title">{{totalActiveCases}}</h1>
-                      <h3>Total number of active cases till today</h3>
-                    </div>
-                  </div>
-                </div>
-                  <div class="col-sm-6">
-                        <div class="card bg-danger text-white">
-                          <div class="card-header">Confirmed</div>
-                          <div class="card-body">
-                            <h1 class="card-title">{{totalConfirmedCases}}</h1>
-                            <h3>Total number of confirmed cases till today</h3>
-                          </div>
-                        </div>
-                </div>
-                </div>
-       
+<div class="container border p-5" *ngIf="totalActiveCases!=null">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card shadow my-3">
+        <h3 class="card-header">Active</h3>
+        <div class="card-body text-info">
+          <h1 class="card-title">{{totalActiveCases}}</h1>
+          <h3>Total number of active cases till today</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card shadow my-3">
+        <h3 class="card-header">Confirmed</h3>
+        <div class="card-body text-danger">
+          <h1 class="card-title">{{totalConfirmedCases}}</h1>
+          <h3>Total number of confirmed cases till today</h3>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div *ngIf="indianSpecificData!=null">
-        <br><hr><br>
+
+  <!-- <div *ngIf="indianSpecificData!=null">
+        <br><br>
           <table class="table">
                   <thead>
                           <tr>
@@ -56,6 +56,5 @@
                           </tr>
                   </tbody>
           </table>
-  </div>
+  </div> -->
 </div>
-  
