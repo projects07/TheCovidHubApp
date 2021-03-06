@@ -21,15 +21,17 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="color:white">
               <span *ngIf="uname!=null && profile=='Yes'">Hi, {{uname}} &nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <a class="btn navbar-btn btn-info" *ngIf="profile=='Yes' && uname!=null" href="/home">Logout</a>
+              <a class="btn navbar-btn btn-info" *ngIf="profile=='Yes' && uname!=null" routerLink="/home">Logout</a>
               <button class="btn navbar-btn btn-primary" *ngIf="profile=='No'" routerLink='/login'>Login</button>&nbsp;&nbsp;
               <button class="btn navbar-btn btn-primary" *ngIf="profile=='No'" routerLink='/signup'>Signup</button>
           </li>
           </ul>
         </div>
 </nav>
-<h3 style="text-align:center;color:white;" class="h3 bg-danger">Body Temperature: 
+<br>
+<br>
+<!-- <h3 style="text-align:center;color:white;" class="h3 bg-danger">Body Temperature: 
   {{temp}} &nbsp; &nbsp; &nbsp; &nbsp; <span *ngIf="symptomCheck==true">Symptoms: {{symptoms}}</span>
   &nbsp; &nbsp; &nbsp; &nbsp; <span *ngIf="symptomCheck==false">Symptoms: No Unusual Symptoms</span>
   &nbsp; &nbsp; &nbsp; &nbsp; <span>Already affected by COVID19?: {{covidAlreadyCame}}</span>
-</h3>
+</h3> -->
