@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/Services/AuthService/authentication-service.service';
+import { SignUp } from '../sign-up/SignUpModel';
 
 @Component({
   selector: 'app-authenticate',
@@ -25,9 +26,16 @@ export class AuthenticateComponent implements OnInit {
   login(){
     let email = this.profileForm.get('Email').value
     let password = this.profileForm.get('password').value
-    this.auth.loginAuthenticate(email, password).subscribe(result => {
-      if(result[0]!=null || result[0] !=undefined){
-      sessionStorage.setItem('uname',result[0].Username);
+    this.auth.loginAuthenticate(email, password).subscribe((result: SignUp) => {
+      if(result!=null || result !=undefined){
+      
+      Object.keys(result).forEach(key => {
+        if((result[key]).Email == email) {
+          sessionStorage.setItem('uname',(result[key]).Username);
+        }
+      });
+
+      console.log(sessionStorage.getItem('uname'));
       this.loginConfirm = true;
       this.auth.setProfileObs("Yes");
       this.router.navigate(['/home']);
