@@ -8,6 +8,7 @@ import { IndiaExclusiveComponent } from './Components/india-exclusive/india-excl
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 
 const routes: Routes = [
+  {path:'',component:HomeComponent},
   {path:'login',component: AuthenticateComponent},
   {path:'home',component:HomeComponent},
   {path:'dashboard',component:DashboardComponent},
