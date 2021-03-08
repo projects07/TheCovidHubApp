@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/Services/AuthService/authentication-service.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class NavBarComponent implements OnInit {
   symptoms: string;
   symptomCheck: boolean;
   covidAlreadyCame = "No";
-  constructor(private auth:AuthenticationServiceService) { }
+  constructor(private auth:AuthenticationServiceService, private router:Router) { }
   uname:string;
   ngOnInit(): void {
     this.auth.getProfileObs().subscribe(profile => this.profile = profile);
@@ -25,6 +26,18 @@ export class NavBarComponent implements OnInit {
     // if(window.confirm("Have you already been affected by COVID19?"))
     //   this.covidAlreadyCame = "Yes"
     // }
+  }
+
+  ngDoCheck() {
+    this.auth.getProfileObs().subscribe(profile => this.profile = profile);
+    this.uname = sessionStorage.getItem('uname');
+  }
+
+  logout() {
+    console.log("logot called");
+    this.auth.setProfileObs("No");
+    sessionStorage.removeItem('uname');
+    this.router.navigate(['home']);
   }
 
 }

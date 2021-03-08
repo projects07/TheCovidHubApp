@@ -38,17 +38,15 @@ export class AuthenticateComponent implements OnInit {
       console.log(sessionStorage.getItem('uname'));
       this.loginConfirm = true;
       this.auth.setProfileObs("Yes");
-      this.router.navigate(['/home']);
+      this.router.navigate(['home']);
     }
     else{
       this.loginConfirm = false;
       console.log(this.loginConfirm);
-      //alert("Please Enter Valid Credentials")
+      alert("Please Enter Valid Credentials")
     }
 
     })
-    
-    console.log(email);
     
   }
   
