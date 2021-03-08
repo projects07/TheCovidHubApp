@@ -21,7 +21,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="color:white">
               <span *ngIf="uname!=null && profile=='Yes'">Hi, {{uname}} &nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <a class="btn navbar-btn btn-info" *ngIf="profile=='Yes' && uname!=null" routerLink="/home">Logout</a>
+              <a class="btn navbar-btn btn-info" *ngIf="profile=='Yes' && uname!=null" (click)="logout()">Logout</a>
               <button class="btn navbar-btn btn-primary" *ngIf="profile=='No'" routerLink='/login'>Login</button>&nbsp;&nbsp;
               <button class="btn navbar-btn btn-primary" *ngIf="profile=='No'" routerLink='/signup'>Signup</button>
           </li>

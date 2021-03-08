@@ -29,7 +29,7 @@ export class SignUpComponent implements OnInit {
     this.newUser.Password = this.signupform.get('Password').value;
     this.newUser.PhoneNumber = this.signupform.get('PhoneNumber').value;
     this.auth.AddNewUser(this.newUser).subscribe(result=>{alert("Account Successfully Created")})
-    this.router.navigate(["/login"])
+    this.router.navigate(["login"])
     //console.log(this.signupform);
     
   }
