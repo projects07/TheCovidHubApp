@@ -20,7 +20,7 @@ export class AuthenticateComponent implements OnInit {
   {
     this.auth.getProfileObs().subscribe(profile => this.profile = profile);
 
-    this.Email = new FormControl('', [Validators.required, Validators.minLength(4)])
+    this.Email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(4)])
     this.password = new FormControl('', Validators.required)
 
     this.profileForm = new FormGroup({
@@ -34,23 +34,21 @@ export class AuthenticateComponent implements OnInit {
     let email = this.profileForm.get('Email').value
     let password = this.profileForm.get('password').value
     this.auth.loginAuthenticate(email, password).subscribe((result: SignUp) => {
-      if(result!=null || result !=undefined){
+
+      if(Object.keys(result).length != 0){
       
       Object.keys(result).forEach(key => {
-        if((result[key]).Email == email) {
+        if((result[key]).Email == email && result[key].Password == password) {
           sessionStorage.setItem('uname',(result[key]).Username);
+          this.loginConfirm = true;
+          this.auth.setProfileObs("Yes");
+          this.router.navigate(['home']);
         }
       });
-
-      console.log(sessionStorage.getItem('uname'));
-      this.loginConfirm = true;
-      this.auth.setProfileObs("Yes");
-      this.router.navigate(['home']);
+      this.loginConfirm = false;
     }
     else{
       this.loginConfirm = false;
-      console.log(this.loginConfirm);
-      alert("Please Enter Valid Credentials")
     }
 
     })

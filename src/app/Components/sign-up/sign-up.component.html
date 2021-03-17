@@ -20,11 +20,14 @@
                                                         Username must be at least 4 characters long.
                                                 </div>
                                         </div>
-                                        Email : <input type="text" formControlName="Email" class="form-control" placeholder="Enter your email" /><br>
+                                        Email : <input type="email" formControlName="Email" class="form-control" placeholder="Enter your email" /><br>
                                         <div *ngIf="Email.invalid && (Email.dirty || Email.touched)"
                                                 class="alert alert-danger">
                                                 <div *ngIf="Email.errors.required">
                                                         Email is required.
+                                                </div>
+                                                <div *ngIf="Email.errors.email">
+                                                        Email should be valid.
                                                 </div>
                                                 <div *ngIf="Email.errors.minlength">
                                                         Email must be at least 4 characters long.
