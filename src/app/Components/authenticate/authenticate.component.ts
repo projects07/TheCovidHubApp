@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/Services/AuthService/authentication-service.service';
 import { SignUp } from '../sign-up/SignUpModel';
@@ -10,6 +10,9 @@ import { SignUp } from '../sign-up/SignUpModel';
   styleUrls: ['./authenticate.component.css']
 })
 export class AuthenticateComponent implements OnInit {
+  profileForm: FormGroup;
+  Email: FormControl;
+  password: FormControl;
 
   constructor(private auth:AuthenticationServiceService,private router:Router) { }
   profile:string;
@@ -17,12 +20,16 @@ export class AuthenticateComponent implements OnInit {
   {
     this.auth.getProfileObs().subscribe(profile => this.profile = profile);
 
+    this.Email = new FormControl('', [Validators.required, Validators.minLength(4)])
+    this.password = new FormControl('', [Validators.required, Validators.minLength(8)])
+
+    this.profileForm = new FormGroup({
+      Email: this.Email,
+      password: this.password
+    })
   }
   temp:string;symptoms:string;loginConfirm:boolean;
-  profileForm = new FormGroup({
-    Email: new FormControl(''),
-    password: new FormControl('')
-  })
+  
   login(){
     let email = this.profileForm.get('Email').value
     let password = this.profileForm.get('password').value

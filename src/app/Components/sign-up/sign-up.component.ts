@@ -9,20 +9,32 @@ import {SignUp} from './SignUpModel'
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  signupform: FormGroup;
+  Username: FormControl;
+  Email: FormControl;
+  Password: FormControl;
+  PhoneNumber: FormControl;
 
   constructor(private auth:AuthenticationServiceService,private router:Router) { }
   newUser:SignUp = {
     id:null,Username:'',Password:'',Email:'',PhoneNumber:0
   }
-  signupform = new FormGroup({
-    Username: new FormControl('',Validators.required),
-    Email: new FormControl('',Validators.required),
-    Password: new FormControl('',Validators.required),
-    PhoneNumber: new FormControl('',Validators.required)
-  })
+
   ngOnInit(): void {
 
+    this.Username = new FormControl('', [Validators.required, Validators.minLength(4)]);
+    this.Email = new FormControl('', [Validators.required, Validators.minLength(4)]);
+    this.Password = new FormControl('', [Validators.required, Validators.minLength(8)]);
+    this.PhoneNumber = new FormControl('', [Validators.required, Validators.minLength(10)]);
+
+    this.signupform = new FormGroup({
+      Username : this.Username,
+      Email: this.Email,
+      Password: this.Password,
+      PhoneNumber: this.PhoneNumber
+    })
   }
+  
   signUp(){
     this.newUser.Username = this.signupform.get('Username').value;
     this.newUser.Email = this.signupform.get('Email').value;
