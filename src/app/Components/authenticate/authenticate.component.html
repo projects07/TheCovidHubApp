@@ -17,6 +17,9 @@
                                                         <div *ngIf="Email.errors.required">
                                                                 Email is required.
                                                         </div>
+                                                        <div *ngIf="Email.errors.email">
+                                                                Email should be valid.
+                                                        </div>
                                                         <div *ngIf="Email.errors.minlength">
                                                                 Email must be at least 4 characters long.
                                                         </div>

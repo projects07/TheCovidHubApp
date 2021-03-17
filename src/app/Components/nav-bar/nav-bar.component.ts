@@ -34,7 +34,6 @@ export class NavBarComponent implements OnInit {
   }
 
   logout() {
-    console.log("logot called");
     this.auth.setProfileObs("No");
     sessionStorage.removeItem('uname');
     this.router.navigate(['home']);
