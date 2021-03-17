@@ -21,7 +21,7 @@ export class AuthenticateComponent implements OnInit {
     this.auth.getProfileObs().subscribe(profile => this.profile = profile);
 
     this.Email = new FormControl('', [Validators.required, Validators.minLength(4)])
-    this.password = new FormControl('', [Validators.required, Validators.minLength(8)])
+    this.password = new FormControl('', Validators.required)
 
     this.profileForm = new FormGroup({
       Email: this.Email,
