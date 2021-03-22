@@ -18,9 +18,9 @@ export class AuthenticationServiceService {
   this.profileObs$.next(profile);
   }
   loginAuthenticate(email:string,password:string){
-    return this.http.get("https://users-db-1d2aa-default-rtdb.firebaseio.com/Users.json?orderBy=\"Email\"&equalTo=\"" + email + "\"");
+    return this.http.get("https://users-db-e402e-default-rtdb.firebaseio.com/users.json?orderBy=\"Email\"&equalTo=\"" + email + "\"");
   }
   AddNewUser(signUp:SignUp){
-    return this.http.post("https://users-db-1d2aa-default-rtdb.firebaseio.com/Users.json/",signUp,{headers:new HttpHeaders({'Content-Type':'application/json'})})
+    return this.http.post("https://users-db-e402e-default-rtdb.firebaseio.com/users.json/",signUp,{headers:new HttpHeaders({'Content-Type':'application/json'})})
   }
 }
