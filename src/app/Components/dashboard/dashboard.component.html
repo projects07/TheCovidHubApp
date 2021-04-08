@@ -92,7 +92,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of theCovidData">
+      <tr *ngFor="let data of theCovidData | orderBy: 'cases': 'reverse'">
         <td>{{data.country}}</td>
         <td>{{data.cases}}</td>
         <td>{{data.todayCases}}</td>

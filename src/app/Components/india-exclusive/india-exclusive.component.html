@@ -37,24 +37,46 @@
     </div>
   </div>
 
+  <div class="d-flex flex-row mt-5 bd-highlight justify-content-center">
+    <div class="mx-4"><svg width="30" height="10">
+        <rect width="30" height="10" style="fill:#d9534f;stroke-width:3;stroke:rgb(0,0,0)" />
+        Sorry, your browser does not support inline SVG.
+      </svg> &nbsp; &nbsp;
+      <p>High Active Cases</p>
+    </div>
+    <div class="mx-4"><svg width="30" height="10">
+      <rect width="30" height="10" style="fill:#f0ad4e;stroke-width:3;stroke:rgb(0,0,0)" />
+      Sorry, your browser does not support inline SVG.
+      </svg> &nbsp; &nbsp;
+      <p>Moderate Active Cases</p>
+    </div>
+    <div class="mx-4"><svg width="30" height="10">
+      <rect width="30" height="10" style="fill:#5cb85c;stroke-width:3;stroke:rgb(0,0,0)" />
+      Sorry, your browser does not support inline SVG.
+      </svg> &nbsp; &nbsp;
+      <p>Low Active Cases</p>
+    </div>
+  </div>
+
 
   <div *ngIf="indianSpecificData!=null">
-        <br><br>
-          <table class="table">
-                  <thead>
-                          <tr>
-                                  <th>District</th>
-                                  <th>Confirmed</th>
-                                  <th>Active</th>
-                          </tr>
-                  </thead>
-                  <tbody>
-                          <tr *ngFor="let district of indianSpecificData.districtData">
-                                  <td>{{ district.district}}</td>
-                                  <td>{{ district.confirmed}}</td>
-                                  <td>{{district.active}}</td>
-                          </tr>
-                  </tbody>
-          </table>
+    <br><br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>District</th>
+          <th>Confirmed</th>
+          <th>Active</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let district of indianSpecificData.districtData | orderBy: 'active': 'reverse'"
+          [ngClass]="district.active>3000 ? 'text-light bg-danger' : (district.active>1000&&district.active<3000 ? 'text-dark bg-warning' : 'text-light bg-success')">
+          <td>{{ district.district}}</td>
+          <td>{{ district.confirmed}}</td>
+          <td>{{ district.active }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

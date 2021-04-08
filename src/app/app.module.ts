@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table'
 import { ChartsModule } from 'ng2-charts';
 import { IndiaExclusiveComponent } from './Components/india-exclusive/india-exclusive.component';
 import { DataTablesModule } from "angular-datatables";
+import { OrderModule } from 'ngx-order-pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { DataTablesModule } from "angular-datatables";
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    MatButtonModule,ChartsModule,DataTablesModule,MatProgressSpinnerModule,MatTableModule
+    MatButtonModule,ChartsModule,DataTablesModule,MatProgressSpinnerModule,MatTableModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
